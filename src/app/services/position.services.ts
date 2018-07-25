@@ -7,6 +7,6 @@ export class PositionServices {
     constructor(private http: HttpClient) { }
 
     getPositions(): Observable<any> {
-        return this.http.get<any>('http://localhost:3000/position/getLastPosition/');
+        return this.http.get<any>('http://app-location-api.herokuapp.com/position/getLastPosition/');
     }
 }
