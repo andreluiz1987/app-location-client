@@ -31,7 +31,7 @@ export class AppComponent implements OnInit {
     this._service.getPositions().subscribe(
       response => {
         console.log(response);
-
+        this.positions = [];
         response.forEach(element => {
 
           var obj = new Position();
