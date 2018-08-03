@@ -15,6 +15,7 @@ import { PositionServices } from "src/app/services/position.services";
 export class AppComponent implements OnInit {
   title = 'app';
 
+  address: string = "";
   lat: number = -19.867464;
   lng: number = -43.926077;
   zoom: number = 12;
@@ -49,10 +50,24 @@ export class AppComponent implements OnInit {
   }
 
   onSelect(selectedItem: any) {
+
     console.log("Selected item Id: ", selectedItem);
+
     this.lat = selectedItem.latitude;
     this.lng = selectedItem.longitude;
     this.zoom = 15;
+
+    this._service.getAddress(this.lat, this.lng).subscribe(
+      response => {
+        debugger
+        console.log(response);
+        this.address = response.formatted_address;
+      },
+      error => {
+        this.address = "Não foi possível localizar o endereço! :("
+        console.log("Erro ao tentar carregar o endereço.")
+      }
+    );
   }
 
   onMouseOver(infoWindow, gm) {

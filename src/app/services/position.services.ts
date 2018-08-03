@@ -9,4 +9,8 @@ export class PositionServices {
     getPositions(): Observable<any> {
         return this.http.get<any>('http://app-location-api.herokuapp.com/position/getLastPosition/');
     }
+
+    getAddress(latitude: number, longitude: number): Observable<any> {
+        return this.http.get<any>(`http://app-location-api.herokuapp.com/position/getAddress/${latitude}/${longitude}`);
+    }
 }
