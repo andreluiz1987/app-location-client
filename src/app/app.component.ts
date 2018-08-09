@@ -38,7 +38,7 @@ export class AppComponent implements OnInit {
           var obj = new Position();
           obj.latitude = element.latitude;
           obj.longitude = element.longitude;
-          obj.data = response.date;
+          obj.data = element.date;
 
           this.positions.push(obj);
         });
